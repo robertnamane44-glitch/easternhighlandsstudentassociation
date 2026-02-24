@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Activities - EHPSA</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f9f9f9; }
+    header {
+      background: linear-gradient(to right, red, green, yellow);
+      color: white; text-align: center; padding: 20px;
+    }
+    h1 { margin: 0; }
+    .activity-section { padding: 20px; }
+    .activity-card {
+      background: white; border: 2px solid #ccc; border-radius: 8px;
+      margin: 20px auto; padding: 20px; max-width: 800px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .activity-card h2 { color: #006400; }
+    .gallery {
+      position: relative; max-width: 600px; margin: 10px auto;
+    }
+    .gallery img { width: 100%; border-radius: 5px; }
+    .gallery button {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.5); color: white; border: none;
+      padding: 10px; cursor: pointer;
+    }
+    .gallery button:hover { background: rgba(0,0,0,0.8); }
+    .gallery button:first-of-type { left: 0; }
+    .gallery button:last-of-type { right: 0; }
+    footer {
+      background-color: #333; color: white; text-align: center; padding: 10px;
+    }
+    footer a { color: yellow; margin: 0 10px; text-decoration: none; }
+    .event-info { font-size: 0.9em; color: #555; margin-top: 5px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Our Activities</h1>
+    <p>Celebrating culture, education, sports, service, and unity</p>
+  </header>
+
+  <div class="activity-section">
+
+    <!-- Cultural Performances -->
+    <div class="activity-card">
+      <h2>Cultural Performances</h2>
+      <p>We proudly showcase traditional dances and cultural heritage during school shows and university events.</p>
+      <div class="gallery">
+        <img id="cultural-img" src="images/cultural1.jpg" alt="Cultural Dance">
+        <button onclick="prevImage('cultural')">&#10094;</button>
+        <button onclick="nextImage('cultural')">&#10095;</button>
+      </div>
+      <p><em>Our dances symbolize unity and pride in Eastern Highlands traditions.</em></p>
+      <div class="event-info">Event: DWU Cultural Show 2025 – Madang Campus</div>
+    </div>
+
+    <!-- Career Expo -->
+    <div class="activity-card">
+      <h2>Career Expo</h2>
+      <p>Our members participate in career expos, promoting Divine Word University across high schools in PNG.</p>
+      <div class="gallery">
+        <img id="career-img" src="images/career1.jpg" alt="Career Expo">
+        <button onclick="prevImage('career')">&#10094;</button>
+        <button onclick="nextImage('career')">&#10095;</button>
+      </div>
+      <p><em>Inspiring future leaders through education and awareness.</em></p>
+      <div class="event-info">Event: Career Expo 2025 – Madang High School</div>
+    </div>
+
+    <!-- Sports -->
+    <div class="activity-card">
+      <h2>Sports - East Nokondis</h2>
+      <p>EHPSA supports the East Nokondis rugby league team, fostering teamwork and athletic excellence.</p>
+      <div class="gallery">
+        <img id="sports-img" src="images/sports1.jpg" alt="East Nokondis Rugby Team">
+        <button onclick="prevImage('sports')">&#10094;</button>
+        <button onclick="nextImage('sports')">&#10095;</button>
+      </div>
+      <p><em>Strength, unity, and determination on the field.</em></p>
+      <div class="event-info">Match: Interfaculty Rugby League 2025 – DWU Oval</div>
+    </div>
+
+    <!-- Community Service -->
+    <div class="activity-card">
+      <h2>Community Service</h2>
+      <p>We engage in projects such as campus clean-ups and hospital visits to Modilon Hospital, showing our commitment to giving back.</p>
+      <div class="gallery">
+        <img id="community-img" src="images/community1.jpg" alt="Community Service">
+        <button onclick="prevImage('community')">&#10094;</button>
+        <button onclick="nextImage('community')">&#10095;</button>
+      </div>
+      <p><em>Serving with compassion and responsibility for our community.</em></p>
+      <div class="event-info">Event: Campus Clean-Up & Modilon Hospital Visit – 2025</div>
+    </div>
+
+    <!-- Bilum Exchange -->
+    <div class="activity-card">
+      <h2>Bilum Exchange</h2>
+      <p>We host events where we invite other provincial student associations, exchange bilums, share stories, and build networks.</p>
+      <div class="gallery">
+        <img id="bilum-img" src="images/bilum1.jpg" alt="Bilum Exchange">
+        <button onclick="prevImage('bilum')">&#10094;</button>
+        <button onclick="nextImage('bilum')">&#10095;</button>
+      </div>
+      <p><em>Strengthening bonds through cultural exchange and friendship.</em></p>
+      <div class="event-info">Event: Bilum Exchange with Jiwaka Student Association – 2025</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Connect with us:</p>
+    <a href="https://facebook.com/yourpage">Facebook</a>
+    <a href="https://wa.me/yourgroup">WhatsApp</a>
+    <a href="mailto:ehpsa@example.com">Email</a>
+    <p>&copy; 2026 Eastern Highlands Province Student Association</p>
+  </footer>
+
+  <script>
+    // Image sets for each activity
+    const galleries = {
+      cultural: ["images/cultural1.jpg", "images/cultural2.jpg", "images/cultural3.jpg"],
+      career: ["images/career1.jpg", "images/career2.jpg", "images/career3.jpg"],
+      sports: ["images/sports1.jpg", "images/sports2.jpg", "images/sports3.jpg"],
+      community: ["images/community1.jpg", "images/community2.jpg", "images/community3.jpg"],
+      bilum: ["images/bilum1.jpg", "images/bilum2.jpg", "images/bilum3.jpg"]
+    };
+
+    let indices = { cultural: 0, career: 0, sports: 0, community: 0, bilum: 0 };
+
+    function showImage(activity) {
+      document.getElementById(activity + "-img").src = galleries[activity][indices[activity]];
+    }
+
+    function prevImage(activity) {
+      indices[activity] = (indices[activity] - 1 + galleries[activity].length) % galleries[activity].length;
+      showImage(activity);
+    }
+
+    function nextImage(activity) {
+      indices[activity] = (indices[activity] + 1) % galleries[activity].length;
+      showImage(activity);
+    }
+  </script>
+
+</body>
+</html>
